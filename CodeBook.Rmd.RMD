@@ -1,0 +1,59 @@
+---
+title: "Getting and Cleaning Data"
+author: "Tseliso Marata"
+date: "30 January 2017"
+output: html_document
+keep_md: true
+code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Getting and Cleaning Data Course Project
+
+## Introduction
+The purpose of this assignment is to clean data and submit a tidy version of the otherwise very untidy data.
+
+## Instructions
+The following instructions were given
+You should create one R script called run_analysis.R that does the following.
+
+1. Merges the training and the test sets to create one data set.
+
+2. Extracts only the measurements on the mean and standard deviation for each measurement.
+3. Uses descriptive activity names to name the activities in the data set
+4. Appropriately labels the data set with descriptive variable names.
+5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+## The Data
+The data used in this assignment relates to accelerometers from the Samsung Galaxy S smartphone worn by volunteers. The link for getting the dataset is 
+<https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip>.
+The link for detailed description of the dataset is 
+<http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones>
+
+
+### Data Processing
+The data was downloaded from the website and unzipped into the directory.
+
+
+The Variables `Xtrain` was used for the purpose of reading the ".txt" data already downloaded into the training set. The same applies to `ytrain` and `subject_train`. The `Xtrain` and `Xtest` data contain the results provided by the accelerometer and gyroscope. The `ytrain` dataset contains IDs 1:6 representing "Walking", "Walking Upstairs", "walking Downstairs", "Sitting" and "Laying".
+
+
+## Transformations
+
+1. The "subject" column was transformed so that instead of subject being labelled as factors of, for example 1, 2, 3:n, it contained the word participant. 
+
+2. Activity levels 1:6 we replaced with factors Walking", "Walking Upstairs", "walking Downstairs", "Sitting" and "Laying".
+
+3. Column names assigned to the data-frames
+
+## Merging of datasets & Writing of a separate dataset
+
+After the datasets were transformed, they were then merged into one working dataset.
+First all training datasets were bound by column. The same operation was performed on test data.
+The resulting dataset were then row bound.  
+
+The final step was to perform the calculation of the mean, order the data and write it to a file.
+
